@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+PROG=$( basename "$0" )
+
+die() {
+	[ -n "$1" ] && >&2 echo "$PROG: $1"
+	exit 1
+}
+
+if [ "${OSTYPE:0:6}" == "darwin" ]; then
+	DATE=/usr/local/opt/coreutils/libexec/gnubin/date
+elif [ "${OSTYPE:0:5}" == "linux" ]; then
+	DATE=/usr/bin/date
+else
+	die "no GNU coreutils compatible 'date' found"
+fi
+
+WRITERS_ROUTINE=96
+WRITERS_INSPIRATION=8
+
+pseudorandom() {
+	(( spike=$RANDOM % $WRITERS_INSPIRATION ))
+	if [ $spike -eq 0 ]; then
+		n=0
+	else
+		(( n=$RANDOM % $WRITERS_ROUTINE ))
+	fi
+	echo $n
+}
+
+n=$( pseudorandom )
+[ $n -gt 0 ] && exit 0
+
+bin=$( dirname "$0" )
+
+t=$( $DATE +%s )
+(( offset=$RANDOM % (60 * 60) ))
+(( t=t - offset ))
+
+when=$( $DATE --date="@${t}" +"%Y-%m-%d %H:%M:%S" ) $bin/mutatio urgeo

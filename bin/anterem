@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+PROG=$( basename "$0" )
+RC=.auctoresrc
+
+die() {
+	[ -n "$1" ] && >&2 echo "$PROG: $1"
+	exit 1
+}
+
+WRITERS_ROUTINE=8
+WRITERS_INSPIRATION=8
+WRITERS_BLOCK=8
+
+pseudorandom() {
+	(( hourly=60 * 60 ))
+	(( interval=$RANDOM % 10 ))
+	(( spike=$RANDOM % $WRITERS_INSPIRATION ))
+	(( slump=$RANDOM % $WRITERS_BLOCK))
+	if [ $spike -eq 0 ]; then
+		(( interval=interval + $RANDOM % $hourly ))
+	elif [ $slump -eq 0 ]; then
+		(( interval=interval + 8 * 2 * $WRITERS_ROUTINE * ($RANDOM % $hourly) ))
+	else
+		(( interval=interval + 2 * $WRITERS_ROUTINE * ($RANDOM % $hourly) ))
+	fi
+	echo $interval
+}
+
+if [ "${OSTYPE:0:6}" == "darwin" ]; then
+	DATE=/usr/local/opt/coreutils/libexec/gnubin/date
+elif [ "${OSTYPE:0:5}" == "linux" ]; then
+	DATE=/usr/bin/date
+else
+	die "no GNU coreutils compatible 'date' found"
+fi
+
+bin=$( dirname "$0" )
+home=$bin/..
+
+source $home/$RC || die "missing $RC"
+
+a=$( $DATE --date="$start" +%s )
+b=$( $DATE +%s )
+
+t=$a
+while [ $t -lt $b ]; do
+	when=$( $DATE --date="@${t}" +"%Y-%m-%d %H:%M:%S" ) $bin/mutatio
+	interval=$( pseudorandom )
+	(( t=t + interval ))
+done
+
+if [ "$1" == "urgeo" ]; then
+	cd $home
+	for remote in "${remotes[@]}"; do
+		git push $remote $branch
+	done
+fi
