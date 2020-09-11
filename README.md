@@ -38,7 +38,7 @@ make anterem
 If your environment supports cron, you can install a cronjob using:
 
 ```sh
-make scribire
+make scribere
 ```
 
 The cronjob will (occasionally) write to the output directory (by default `./exitum`) following a pseudo-random pattern.

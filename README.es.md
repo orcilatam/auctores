@@ -38,7 +38,7 @@ make anterem
 Si su entorno tiene cron, puede instalar un cronjob con:
 
 ```sh
-make scribire
+make scribere
 ```
 
 El cronjob (ocasionalmente) escribe al directorio de salida (por omisión `./exitum`) conforme a un patrón pseudo-aleatorio.
