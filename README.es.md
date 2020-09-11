@@ -52,4 +52,4 @@ Text corpus
 - “The Merchant of Venice”  by William Shakespeare
 - „Faust: Der Tragödie (erster und zweiter Teilen)” von Johann Wolfgang von Goethe
 
-Original texts from Project Gutenberg. These eBooks are for the use of anyone anywhere at no cost and with almost no restrictions whatsoever.  You may copy it, give it away or re-use it under the terms of the [Project Gutenberg License](corpus/LICENSE) included with this eBook or online at [Project Gutenberg](https://www.gutenberg.net]).
+Original texts from Project Gutenberg. These eBooks are for the use of anyone anywhere at no cost and with almost no restrictions whatsoever.  You may copy them, give them away or re-use them under the terms of the [Project Gutenberg License](corpus/LICENSE) included with these eBooks or online at [Project Gutenberg](https://www.gutenberg.net]).
