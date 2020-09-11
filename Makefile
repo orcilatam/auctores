@@ -2,6 +2,6 @@ anterem:
 	./bin/anterem urgeo
 
 scribere:
-	(crontab -l; echo "* * * * * $(CURDIR)/bin/scribere") | crontab -
+	(crontab -l; echo "59 * * * * $(CURDIR)/bin/scribere") | crontab -
 
 .PHONY: anterem scribere
