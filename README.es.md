@@ -1,6 +1,8 @@
 Auctores
 ========
 
+*Terminat hora diem; terminat auctor opus.*
+
 ![Erasmo de Rotterdam de Alberto Durero](picturae/erasmus.jpg) 
 
 [README in English](../../)

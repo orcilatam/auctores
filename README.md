@@ -1,6 +1,8 @@
 Auctores
 ========
 
+*Terminat hora diem; terminat auctor opus.*
+
 ![Erasmus of Rotterdam by Albrecht Dürer](picturae/erasmus.jpg) 
 
 [LÉAME en español](README.es.md)
