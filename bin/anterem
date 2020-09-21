@@ -31,9 +31,9 @@ if [ "${OSTYPE:0:6}" == "darwin" ]; then
 	DATE=/usr/local/opt/coreutils/libexec/gnubin/date
 elif [ "${OSTYPE:0:5}" == "linux" ]; then
 	DATE=/usr/bin/date
-else
-	die "no GNU coreutils compatible 'date' found"
 fi
+
+[ -f "$DATE" ] || die "no GNU coreutils compatible 'date' found"
 
 bin=$( dirname "$0" )
 home=$bin/..
